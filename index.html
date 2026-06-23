@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Kaul 2026 - Undangan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ===== PALET HIJAU RASEDA GREEN ===== */
+    --green-lightest:#6E8649;   /* terang - aksen sekunder */
+    --green-light:#477023;      /* medium - aksen utama */
+    --green-mid:#2D531A;        /* gelap - teks & tombol */
+    --green-dark:#0D330E;       /* sangat gelap - teks utama */
+    --green-deepest:#071E07;    /* terdalam - bayangan & latar gelap */
+
+    --cream:#F7F8F3;            /* latar terang pengganti cream, sedikit hijau muda */
+    --cream-deep:#ECEFE3;       /* latar sekunder, hijau muda pucat */
+    --text:#0D330E;
+    --muted:#5B6E52;
+    --accent:#6E8649;
+    --accent-deep:#2D531A;
+    --line:#D7DEC8;
+    --radius:10px;
+    --shadow:0 10px 28px rgba(7,30,7,0.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins', sans-serif;
+    background:var(--cream);
+    color:var(--text);
+    line-height:1.7;
+    font-size:16px;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:0;
+  }
+  .phone{
+    max-width:1200px;
+    margin:0 auto;
+    background:var(--cream);
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+    box-shadow:none;
+  }
+  h1,h2,h3,h4,.display{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    color:var(--green-dark);
+  }
+  img{ max-width:100%; display:block; border-radius:var(--radius); }
+  .ph{
+    background:repeating-linear-gradient(135deg, #DCE4CB 0px, #DCE4CB 12px, #E6EBD9 12px, #E6EBD9 24px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#7E9460;
+    font-family:'Poppins', sans-serif;
+    font-size:0.7rem;
+    font-weight:500;
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    border-radius:var(--radius);
+  }
+
+  /* ===== SCROLL FADE-IN ANIMATION ===== */
+  .fade-up{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity 0.8s cubic-bezier(.21,.6,.35,1), transform 0.8s cubic-bezier(.21,.6,.35,1);
+  }
+  .fade-up.in-view{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .fade-up.delay-1{ transition-delay:0.1s; }
+  .fade-up.delay-2{ transition-delay:0.2s; }
+  .fade-up.delay-3{ transition-delay:0.3s; }
+  .fade-up.delay-4{ transition-delay:0.4s; }
+  .zoom-in{
+    opacity:0;
+    transform:scale(0.94);
+    transition:opacity 0.8s cubic-bezier(.21,.6,.35,1), transform 0.8s cubic-bezier(.21,.6,.35,1);
+  }
+  .zoom-in.in-view{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  /* ===== ORNAMENT ===== */
+  .ornament{
+    width:42px;
+    height:42px;
+    margin:0 auto 12px;
+    opacity:0.9;
+  }
+  .ornament svg{ width:100%; height:100%; stroke:var(--accent-deep); fill:none; stroke-width:1.2; }
+  .divider{
+    width:46px;height:2px;
+    background:var(--accent-deep);
+    margin:14px auto;
+    border-radius:2px;
+  }
+  .divider-long{
+    width:100%;height:1px;
+    background:var(--line);
+    margin:24px 0;
+  }
+  .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.26em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    font-weight:600;
+  }
+
+  /* ===== SECTION COVER / GATE ===== */
+  #section-cover{
+    min-height:1vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:48px 30px 12px;
+    background:linear-gradient(180deg, var(--cream-deep) 0%, var(--cream) 55%);
+    position:relative;
+  }
+  .cover-logo{
+    width:56px;height:56px;
+    border-radius:50%;
+    margin:0 auto 18px;
+  }
+  .cover-eyebrow{
+    font-size:0.78rem;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+  .cover-tagline{
+    font-size:0.95rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .cover-title{
+    font-size:2.4rem;
+    line-height:1.15;
+    letter-spacing:0.02em;
+    color:var(--green-dark);
+  }
+  .cover-date{
+    margin-top:18px;
+    font-size:1.02rem;
+    color:var(--accent-deep);
+    letter-spacing:0.06em;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+  }
+  .btn-open{
+    margin-top:32px;
+    padding:15px 44px;
+    border:none;
+    background:var(--green-mid);
+    color:#FFFFFF;
+    font-family:'Poppins', sans-serif;
+    font-weight:500;
+    font-size:0.95rem;
+    letter-spacing:0.08em;
+    cursor:pointer;
+    border-radius:30px;
+    box-shadow:0 8px 22px rgba(13,51,14,0.35);
+    transition:all 0.3s ease;
+  }
+  .btn-open:hover{
+    background:var(--green-deepest);
+    transform:translateY(-2px);
+    box-shadow:0 10px 26px rgba(13,51,14,0.45);
+  }
+
+  /* ===== SECTION GENERIC ===== */
+  .section{
+    padding:56px 24px;
+    position:relative;
+    max-width:1140px;
+    margin:0 auto;
+  }
+  .section-head{
+    text-align:center;
+    margin-bottom:28px;
+  }
+  .section-head .eyebrow{ display:block; margin-bottom:6px; }
+  .section-head h2{
+    font-size:2.4rem;
+  }
+  .quote-block{
+    text-align:center;
+    font-size:0.95rem;
+    color:var(--muted);
+    padding:0 4px;
+    margin:0 auto 22px;
+    font-weight:300;
+    max-width:680px;
+  }
+  .quote-block strong{
+    font-weight:600;
+    color:var(--accent-deep);
+  }
+
+  /* ===== HERO BANNER (Kaul Perdana / Kaul Kekal) ===== */
+  .jumbo{
+    position:relative;
+    margin-bottom:16px;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    max-width:1100px;          /* ← Tambah ini */
+    margin-left:auto;          /* ← Tambah ini */
+    margin-right:auto;         /* ← Tambah ini */
+  }
+  .jumbo .ph{
+    width:100%;
+    height:220px;
+    border-radius:var(--radius);
+  }
+  .jumbo-caption{
+    position:absolute;
+    bottom:0; left:0; right:0;
+    padding:22px 18px 16px;
+    background:linear-gradient(180deg, transparent, rgba(7,30,7,0.78));
+    color:#fff;
+    text-align:center;
+  }
+  .jumbo-caption .jc-title{
+    font-family:'Playfair Display', serif;
+    font-size:1.5rem;
+    font-weight:600;
+  }
+  .jumbo-caption .jc-sub{
+    font-size:0.8rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:#D9E4C7;
+    margin-top:4px;
+    font-weight:500;
+  }
+
+  /* ===== PROFILE CARDS ===== */
+  .group-label{
+    text-align:center;
+    margin:32px 0 22px;
+  }
+  .group-label .gl-tag{
+    font-size:0.72rem;
+    letter-spacing:0.26em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    font-weight:600;
+  }
+  .group-label .gl-title{
+    font-size:1.55rem;
+    margin-top:4px;
+  }
+  .profile-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+  }
+  .profile-card{
+    background:#fff;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:22px 18px;
+    text-align:center;
+  }
+  .profile-photo{
+    width:100%;
+    height:200px;
+    margin-bottom:16px;
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .profile-photo .ph{
+    width:100%;height:100%;
+    font-size:0.7rem;
+  }
+  .profile-tag{
+    font-size:0.7rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .profile-name{
+    font-size:1.25rem;
+    margin-bottom:8px;
+  }
+  .profile-parish{
+    font-size:0.86rem;
+    color:var(--muted);
+    margin:0 auto 14px;
+    font-weight:300;
+  }
+  .social-links{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+  }
+  .social-links a{
+    width:36px;height:36px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--accent-deep);
+    text-decoration:none;
+    font-size:0.7rem;
+    font-weight:600;
+    transition:0.3s;
+  }
+  .social-links a:hover{
+    background:var(--accent-deep);
+    color:#fff;
+    border-color:var(--accent-deep);
+  }
+  .social-links a.disabled{
+    opacity:0.25;
+    pointer-events:none;
+  }
+
+  /* ===== GALLERY ===== */
+
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+  }
+  .gallery-grid .ph{
+    width:100%;
+    aspect-ratio:1/1;
+    font-size:0.6rem;
+    border-radius:8px;
+    cursor:pointer;
+    transition:transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .gallery-grid .ph:hover{
+    transform:scale(1.05);
+    box-shadow:var(--shadow);
+    z-index:2;
+  }
+
+  /* ===== LIGHTBOX GALLERY ===== */
+  #lightbox{
+    position:fixed;
+    inset:0;
+    z-index:120;
+    background:rgba(0,0,0,0.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    opacity:0;
+    transition:opacity 0.3s ease;
+  }
+  #lightbox.show{
+    display:flex;
+    opacity:1;
+  }
+  #lightbox .lightbox-content{
+    position:relative;
+    max-width:90vw;
+    max-height:90vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  #lightbox img{
+    max-width:100%;
+    max-height:80vh;
+    object-fit:contain;
+    border-radius:8px;
+  }
+  #lightbox .lightbox-nav{
+    position:absolute;
+    top:50%;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding:0 20px;
+    transform:translateY(-50%);
+    pointer-events:none;
+  }
+  #lightbox .lightbox-nav button{
+    pointer-events:auto;
+    width:50px;
+    height:50px;
+    border:none;
+    background:rgba(255,255,255,0.2);
+    color:#fff;
+    font-size:28px;
+    border-radius:50%;
+    cursor:pointer;
+    transition:background 0.3s;
+  }
+  #lightbox .lightbox-nav button:hover{
+    background:rgba(255,255,255,0.4);
+  }
+  #lightbox .lightbox-close{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:40px;
+    height:40px;
+    border:none;
+    background:rgba(255,255,255,0.2);
+    color:#fff;
+    font-size:28px;
+    border-radius:50%;
+    cursor:pointer;
+    transition:background 0.3s;
+  }
+  #lightbox .lightbox-close:hover{
+    background:rgba(255,255,255,0.4);
+  }
+  #lightbox .lightbox-counter{
+    color:#fff;
+    font-size:0.9rem;
+    margin-top:15px;
+    text-align:center;
+  }
+
+  /* ===== COUNTDOWN ===== */
+  .countdown-wrap{ text-align:center; }
+  .countdown-date{
+    font-family:'Playfair Display', serif;
+    font-size:1.3rem;
+    color:var(--green-dark);
+    margin-bottom:20px;
+  }
+  .countdown{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:24px;
+    flex-wrap:wrap;
+  }
+  .countdown .cell{
+    width:62px;
+  }
+  .countdown .num{
+    font-family:'Playfair Display', serif;
+    font-size:1.6rem;
+    font-weight:600;
+    color:var(--accent-deep);
+    border-radius:var(--radius);
+    padding:13px 0;
+    background:#fff;
+    box-shadow:var(--shadow);
+  }
+  .countdown .lbl{
+    font-size:0.64rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:7px;
+    display:block;
+  }
+  .btn-pill{
+    display:inline-block;
+    padding:13px 30px;
+    border:1.5px solid var(--accent-deep);
+    color:var(--accent-deep);
+    font-family:'Poppins', sans-serif;
+    font-weight:500;
+    font-size:0.88rem;
+    letter-spacing:0.06em;
+    border-radius:30px;
+    text-decoration:none;
+    cursor:pointer;
+    background:transparent;
+    transition:0.3s;
+  }
+  .btn-pill:hover{
+    background:var(--accent-deep);
+    color:#fff;
+  }
+
+  /* ===== EVENT CARDS ===== */
+  .event-card{
+    background:#fff;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:28px 26px;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:26px;
+  }
+  .event-card > div:first-child{
+    flex:1;
+    text-align:left;
+  }
+  .event-card .ev-eyebrow{
+    color:var(--accent-deep);
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-size:0.7rem;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .event-card h3{
+    font-size:1.45rem;
+    margin-bottom:10px;
+  }
+  .event-card .ev-time{
+    font-size:1rem;
+    margin-bottom:5px;
+    font-weight:500;
+  }
+  .event-card .ev-place{
+    font-size:0.88rem;
+    color:var(--muted);
+    margin-bottom:14px;
+    font-weight:300;
+  }
+  .event-card iframe{
+    width:320px;
+    height:200px;
+    flex-shrink:0;
+    border:none;
+    border-radius:8px;
+  }
+
+  /* ===== RSVP ===== */
+  .rsvp-stats{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-bottom:24px;
+    text-align:center;
+  }
+  .rsvp-stats .stat-num{
+    font-family:'Playfair Display', serif;
+    font-size:1.9rem;
+    font-weight:700;
+    color:var(--accent-deep);
+  }
+  .rsvp-stats .stat-lbl{
+    font-size:0.7rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .form-card{
+    background:#fff;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:24px 22px;
+    max-width:560px;
+    margin:0 auto;
+  }
+  .form-group{ margin-bottom:16px; }
+  .form-group label{
+    display:block;
+    font-size:0.74rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:7px;
+    font-weight:500;
+  }
+  .form-group input,
+  .form-group textarea{
+    width:100%;
+    padding:12px 16px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--cream);
+    font-family:'Poppins', sans-serif;
+    font-size:0.92rem;
+    color:var(--text);
+    resize:vertical;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus{
+    outline:none;
+    border-color:var(--accent);
+    background:#fff;
+  }
+  .form-hint{
+    font-size:0.72rem;
+    color:var(--muted);
+    margin-top:6px;
+  }
+  .rsvp-toggle{
+    display:flex;
+    gap:10px;
+    margin-bottom:0;
+  }
+  .rsvp-toggle button{
+    flex:1;
+    padding:12px;
+    border:1px solid var(--line);
+    background:var(--cream);
+    font-family:'Poppins', sans-serif;
+    font-size:0.9rem;
+    font-weight:500;
+    color:var(--text);
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.25s;
+  }
+  .rsvp-toggle button.active{
+    background:var(--green-mid);
+    color:#fff;
+    border-color:var(--green-mid);
+  }
+  .btn-submit{
+    display:block;
+    max-width:560px;
+    margin:14px auto 0;
+    width:100%;
+    padding:14px;
+    background:var(--green-mid);
+    color:#fff;
+    border:none;
+    border-radius:30px;
+    font-family:'Poppins', sans-serif;
+    font-weight:500;
+    font-size:0.95rem;
+    letter-spacing:0.08em;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 8px 22px rgba(13,51,14,0.3);
+  }
+  .btn-submit:hover{ background:var(--green-deepest); }
+
+  .wish-count-link{
+    text-align:center;
+    font-size:0.85rem;
+    margin-bottom:16px;
+    color:var(--accent-deep);
+  }
+  .wish-count-link a{
+    color:var(--accent-deep);
+    text-decoration:none;
+    font-weight:500;
+  }
+
+  .wish-list{
+    margin-top:26px;
+    max-width:560px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .wish-item{
+    background:#fff;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .wish-item .wname{
+    font-family:'Playfair Display', serif;
+    font-size:1.02rem;
+    font-weight:600;
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .wish-badge{
+    font-size:0.6rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:3px 10px;
+    border-radius:10px;
+    background:var(--cream-deep);
+    color:var(--accent-deep);
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+  }
+  .wish-badge.absen{
+    background:#E9DCC9;
+    color:#8A6A3A;
+  }
+  .wish-item .wmsg{
+    font-size:0.9rem;
+    color:#3F4B38;
+    margin-top:6px;
+    font-weight:300;
+  }
+  .wish-item .wtime{
+    font-size:0.68rem;
+    color:var(--muted);
+    margin-top:6px;
+  }
+  .wish-empty{
+    text-align:center;
+    color:var(--muted);
+    padding:20px 0;
+    font-size:0.9rem;
+  }
+
+  /* ===== GIFT ===== */
+  .gift-text{
+    text-align:center;
+    font-size:0.92rem;
+    color:var(--muted);
+    margin:0 auto 22px;
+    padding:0 6px;
+    font-weight:300;
+    max-width:620px;
+  }
+  .gift-toggle-wrap{ text-align:center; }
+  .gift-card{
+    margin:20px auto 0;
+    max-width:380px;
+    background:#fff;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:26px;
+    text-align:center;
+    display:none;
+  }
+  .gift-card.show{ display:block; }
+  .gift-card .bank-logo{
+    width:90px;height:34px;
+    margin:0 auto 16px;
+    border-radius:6px;
+    font-size:0.6rem;
+  }
+  .gift-card .acc-number{
+    font-family:'Playfair Display', serif;
+    font-size:1.5rem;
+    font-weight:700;
+    color:var(--text);
+    letter-spacing:0.06em;
+    margin-bottom:6px;
+  }
+  .gift-card .acc-name{
+    font-size:0.84rem;
+    color:var(--muted);
+    margin-bottom:16px;
+    font-weight:300;
+  }
+  .btn-copy{
+    padding:11px 28px;
+    border:1.5px solid var(--accent-deep);
+    background:transparent;
+    color:var(--accent-deep);
+    font-family:'Poppins', sans-serif;
+    font-size:0.85rem;
+    font-weight:500;
+    letter-spacing:0.06em;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+  }
+  .btn-copy:hover{
+    background:var(--accent-deep);
+    color:#fff;
+  }
+
+  /* ===== THANK YOU ===== */
+  #section-thanks{
+    text-align:center;
+    background:var(--cream-deep);
+    padding:48px 24px;
+  }
+  #section-thanks h2{
+    font-size:1.7rem;
+    letter-spacing:0.04em;
+  }
+  #section-thanks .ty-sub{
+    font-size:0.95rem;
+    color:var(--muted);
+    max-width:300px;
+    margin:8px auto 0;
+    font-weight:300;
+  }
+
+  /* ===== CLOSING ===== */
+  #section-closing{
+    text-align:center;
+    background:var(--cream-deep);
+    padding:48px 24px;
+  }
+  .closing-columns{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    flex-wrap:wrap;
+    margin-top:0;
+  }
+  .closing-block{
+    margin-top:22px;
+  }
+  .closing-block h4{
+    font-size:1.1rem;
+    margin-bottom:10px;
+  }
+  .closing-block p{
+    font-size:0.92rem;
+    color:#3F4B38;
+    margin-bottom:4px;
+    font-weight:300;
+  }
+  .closing-block p.role{
+    font-size:0.8rem;
+    color:var(--muted);
+    margin-bottom:14px;
+    font-style:italic;
+  }
+  .closing-blessing{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:1.08rem;
+    color:var(--green-dark);
+    margin-top:30px;
+    line-height:1.8;
+  }
+
+  /* ===== FOOTER ===== */
+  #section-footer{
+    text-align:center;
+    background:var(--cream);
+    padding:48px 24px;
+  }
+  .footer-logo{
+    width:56px;height:56px;
+    border-radius:50%;
+    margin:0 auto 14px;
+  }
+  #section-footer p{
+    font-size:0.88rem;
+    color:var(--muted);
+    max-width:320px;
+    margin:0 auto 18px;
+    font-weight:300;
+  }
+  .footer-links{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .footer-links a{
+    font-size:0.78rem;
+    color:var(--accent-deep);
+    text-decoration:none;
+    border:1px solid var(--line);
+    padding:8px 16px;
+    border-radius:20px;
+    transition:0.3s;
+    font-weight:500;
+  }
+  .footer-links a:hover{
+    background:var(--accent-deep);
+    color:#fff;
+    border-color:var(--accent-deep);
+  }
+
+  /* ===== ADMIN LOGIN MODAL ===== */
+  #adminModal{
+    position:fixed;
+    inset:0;
+    z-index:150;
+    background:rgba(7,30,7,0.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  #adminModal.show{
+    display:flex;
+  }
+  #adminModal .modal-content{
+    background:#fff;
+    border-radius:var(--radius);
+    padding:32px 24px;
+    max-width:360px;
+    width:100%;
+    box-shadow:0 20px 56px rgba(7,30,7,0.35);
+  }
+  #adminModal h3{
+    font-size:1.35rem;
+    margin-bottom:6px;
+    text-align:center;
+  }
+  #adminModal .modal-hint{
+    font-size:0.85rem;
+    color:var(--muted);
+    text-align:center;
+    margin-bottom:18px;
+  }
+  #adminModal .form-group{
+    margin-bottom:14px;
+  }
+  #adminModal .form-group label{
+    display:block;
+    font-size:0.74rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:7px;
+    font-weight:500;
+  }
+  #adminModal .form-group input{
+    width:100%;
+    padding:12px 16px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--cream);
+    font-family:'Poppins', sans-serif;
+    font-size:0.92rem;
+    color:var(--text);
+  }
+  #adminModal .form-group input:focus{
+    outline:none;
+    border-color:var(--accent);
+    background:#fff;
+  }
+  #adminModal .modal-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+  }
+  #adminModal .modal-buttons button{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    font-family:'Poppins', sans-serif;
+    font-weight:500;
+    font-size:0.9rem;
+    cursor:pointer;
+    transition:0.3s;
+  }
+  #adminModal .btn-submit-modal{
+    background:var(--green-mid);
+    color:#fff;
+  }
+  #adminModal .btn-submit-modal:hover{
+    background:var(--green-deepest);
+  }
+  #adminModal .btn-cancel{
+    background:var(--line);
+    color:var(--text);
+  }
+  #adminModal .btn-cancel:hover{
+    background:var(--line);
+    opacity:0.8;
+  }
+  .admin-badge{
+    display:inline-block;
+    font-size:0.6rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:3px 10px;
+    border-radius:10px;
+    background:#D9E4C7;
+    color:var(--green-mid);
+    font-weight:600;
+    margin-left:6px;
+  }
+
+  /* ===== BOTTOM NAV ===== */
+  .bottom-nav{
+    display:none;
+  }
+
+  /* ===== GATE OVERLAY ===== */
+  #gate{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity 0.7s ease, visibility 0.7s;
+  }
+  #gate::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(7,30,7,0.55) 0%, rgba(13,51,14,0.62) 60%);
+    z-index:1;
+  }
+  #gate.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  /* Crossfade photo layer: tiap foto punya WRAPPER (animasi opacity saja)
+     dan IMG di dalamnya (animasi zoom Ken-Burns saja). Memisahkan dua animasi
+     ke elemen berbeda mencegah "jumping" yang terjadi saat opacity & transform
+     dianimasikan bersamaan pada elemen yang sama dengan durasi berbeda. */
+  .gate-photo-stack{
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+  .gate-photo-stack .gp-layer{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity 1.6s ease;
+    will-change:opacity;
+    overflow:hidden;
+  }
+  .gate-photo-stack .gp-layer.active{
+    opacity:1;
+    z-index:1;
+  }
+  .gate-photo-stack .gp-layer img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    border-radius:0;
+    transform:scale(1);
+    transition:none;
+  }
+  /* Zoom Ken-Burns hanya dipicu lewat class terpisah agar tidak terikat ke transisi opacity */
+  .gate-photo-stack .gp-layer.kb img{
+    transform:scale(1.08);
+    transition:transform 6.5s linear;
+  }
+  #gate .gate-inner{
+    max-width:480px;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:48px 30px;
+    overflow-y:auto;
+    position:relative;
+    z-index:2;
+  }
+  .gate-fade{
+    opacity:0;
+    transform:translateY(18px);
+    animation:gateIn 0.9s ease forwards;
+  }
+  .gate-fade.d1{ animation-delay:0.1s; }
+  .gate-fade.d2{ animation-delay:0.25s; }
+  .gate-fade.d3{ animation-delay:0.4s; }
+  .gate-fade.d4{ animation-delay:0.55s; }
+  .gate-fade.d5{ animation-delay:0.7s; }
+  @keyframes gateIn{
+    to{ opacity:1; transform:translateY(0); }
+  }
+  #gate .cover-eyebrow,
+  #gate .cover-tagline{ color:#E5EAD8; }
+  #gate .cover-title{ color:#FFFFFF; }
+  #gate .cover-date{ color:#D9E4C7; }
+  #gate .divider{ background:#D9E4C7; }
+
+  /* ===== TRANSISI SAAT "BUKA UNDANGAN" DIKLIK ===== */
+  /* Panel hijau yang membuka seperti kain terangkat ke atas, lalu gate fade out */
+  #gate.opening .gate-inner{
+    animation:gateInnerOut 0.6s cubic-bezier(.55,0,.1,1) forwards;
+  }
+  @keyframes gateInnerOut{
+    to{ opacity:0; transform:translateY(-26px) scale(0.98); }
+  }
+  #gate.opening{
+    transition:opacity 0.9s cubic-bezier(.55,0,.1,1) 0.25s, visibility 0.9s 0.25s;
+  }
+  #gate.opening::before{
+    transition:opacity 0.9s ease 0.25s;
+    opacity:0;
+  }
+  /* reveal halaman utama: muncul dengan fade + sedikit naik, terasa seperti "tirai dibuka" */
+  .phone{
+    opacity:1;
+  }
+  .phone.reveal-init{
+    opacity:0;
+    transform:translateY(14px);
+  }
+  .phone.reveal-in{
+    opacity:1;
+    transform:translateY(0);
+    transition:opacity 0.9s cubic-bezier(.21,.6,.35,1), transform 0.9s cubic-bezier(.21,.6,.35,1);
+  }
+
+  .admin-btn{
+    margin:18px auto 0;
+    width:15px;
+    height:15px;
+    background:transparent;
+    color:var(--accent-deep);
+    border:1px solid var(--line);
+    border-radius:50%;
+    font-size:0.8rem;
+    cursor:pointer;
+    box-shadow:none;
+    display:block;
+    line-height:15px;
+    text-align:center;
+    transition:0.3s;
+    opacity:0.2;
+  }
+  .admin-btn:hover{
+    background:transparent;
+    box-shadow:none;
+    opacity:0.8;
+  }
+
+  /* ===================== RESPONSIVE: DESKTOP / TABLET LEBAR ===================== */
+  @media (min-width:769px){
+    body{ background:#E1E8D2; }
+
+    .phone{
+      max-width:1320px;
+      box-shadow:0 0 60px rgba(7,30,7,0.08);
+    }
+    .section{
+      max-width:1240px;
+      padding:72px 56px;
+    }
+    .section-head h2{ font-size:2.7rem; }
+    .cover-title{ font-size:3rem; }
+
+    .profile-grid{
+      grid-template-columns:repeat(4, 1fr);
+      gap:22px;
+    }
+    .gallery-grid{
+      grid-template-columns:repeat(6, 1fr);
+      gap:14px;
+    }
+    .event-card iframe{ width:380px; height:230px; }
+    .countdown .cell{ width:74px; }
+    .countdown .num{ font-size:1.85rem; padding:16px 0; }
+  }
+
+  @media (min-width:1100px){
+    .section{ padding:84px 70px; }
+  }
+
+  /* ===================== RESPONSIVE: MOBILE / TABLET KECIL ===================== */
+  @media (max-width:768px){
+    .section{ padding:48px 20px; }
+    .section-head h2{ font-size:2rem; }
+    .cover-title{ font-size:2.1rem; }
+    .profile-grid{ grid-template-columns:1fr; gap:16px; }
+    .gallery-grid{ grid-template-columns:repeat(3,1fr); }
+    .event-card{
+      flex-direction:column;
+      padding:24px 20px;
+      text-align:left;
+    }
+    .event-card iframe{ width:100%; height:200px; }
+    .closing-columns{ gap:0; }
+  }
+
+  @media (max-width:480px){
+    .section{ padding:40px 18px; }
+    .countdown .cell{ width:54px; }
+    .countdown .num{ font-size:1.3rem; padding:11px 0; }
+    .gallery-grid{ grid-template-columns:repeat(2,1fr); gap:8px; }
+    .cover-title{ font-size:1.85rem; }
+    .section-head h2{ font-size:1.7rem; }
+  }
+
+  /* Hormati pengguna yang minta animasi minim (aksesibilitas + battery saving di HP lama) */
+  @media (prefers-reduced-motion: reduce){
+    .gate-photo-stack .gp-layer{ transition:opacity 0.6s ease; }
+    .gate-photo-stack .gp-layer img{ transition:none !important; transform:none !important; }
+    .gate-fade{ animation-duration:0.01ms !important; }
+    #gate.opening .gate-inner{ animation-duration:0.01ms !important; }
+    .phone.reveal-in{ transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== GATE / COVER ===================== -->
+<div id="gate">
+  <!-- Layer foto: dua <img> ditumpuk dan di-crossfade lewat opacity (bukan background-image),
+       jauh lebih ringan & tidak ada efek "zoom aneh" khas background-attachment:fixed di HP -->
+  <div class="gate-photo-stack" id="gatePhotoStack">
+    <div class="gp-layer active" id="gateLayerA"><img id="gatePhotoA" src="Foto Welcome/FW 1.JPG" alt=""></div>
+    <div class="gp-layer" id="gateLayerB"><img id="gatePhotoB" src="" alt=""></div>
+  </div>
+
+  <div class="gate-inner">
+    <img src="Logo/LOGO 150x150.png" class="cover-logo gate-fade d1" alt="Logo">
+    <p class="cover-eyebrow gate-fade d2">Undangan</p>
+    <p class="cover-tagline gate-fade d2">Perayaan Kaul</p>
+    <h1 class="cover-title gate-fade d3">KEKAL &amp; PERDANA</h1>
+    <div class="divider gate-fade d4"></div>
+    <p class="cover-date gate-fade d4">Sabtu, 15 Agustus 2026</p>
+
+    <button class="btn-open gate-fade d5" onclick="openInvitation()">Buka Undangan</button>
+  </div>
+</div>
+
+<!-- ===================== MAIN CONTENT ===================== -->
+<div class="phone reveal-init" id="mainPhone">
+
+  <!-- COVER / HERO (after gate) -->
+  <section id="section-cover" class="section">
+    <img src="Logo/LOGO 150x150.png" class="cover-logo gate-fade d1" alt="Logo">
+    <p class="eyebrow fade-up" style="display:block;text-align:center;font-size:1rem;">Hiduplah Allah Tritunggal Mahakudus</p>
+    <h2 class="fade-up delay-1" style="font-size:2.4rem;font-weight:700;font-family:'Playfair Display',serif;font-style:italic;max-width:900px;margin:8px auto 0;color:var(--muted);text-align:center;">
+      dalam hati kita dan hati semua manusia
+    </h2>
+    <div class="divider fade-up delay-1"></div>
+    <p class="fade-up delay-2" style="font-size:1.05rem;color:var(--muted);max-width:780px;margin:0 auto;text-align:center;font-weight:300;">
+      Dengan memohon rahmat dan penyelenggaraan Allah Tritunggal yang Mahakudus, maka kami dengan berani memutuskan untuk mengikrarkan Kaul Perdana dan Kaul Kekal:
+    </p>
+  </section>
+
+  <!-- ===================== COUPLE / YUBILARIS ===================== -->
+  <section id="couple" class="section" style="padding-top:8px;">
+
+    <!-- Banner Kaul Perdana -->
+<div class="jumbo fade-up zoom-in delay-1" style="margin-bottom:50px;">
+  <div class="ph" style="background-image: url('Foto Lembar ke 2/FL 1.JPG'); background-size: cover; background-position: top;"></div>
+  <div class="jumbo-caption">
+        <div class="jc-title">Kaul Perdana</div>
+        <div class="jc-sub">ANGKATAN GENCANA</div>
+  </div>
+</div>
+
+    <!-- Banner Kaul Kekal -->
+<div class="jumbo fade-up zoom-in delay-1" style="margin-bottom:0;">
+  <div class="ph" style="background-image: url('Foto Lembar ke 2/FL 2.JPG'); background-size: cover; background-position: top;"></div>
+  <div class="jumbo-caption">
+    <div class="jc-title">Kaul Kekal</div>
+    <div class="jc-sub">ANGKATAN SABDA</div>
+  </div>
+</div>
+
+    <!-- Kaul Kekal group -->
+    <div class="group-label fade-up">
+      <div class="gl-tag">Para Yubilaris</div>
+      <div class="gl-title">Kaul Kekal</div>
+    </div>
+
+    <div class="profile-grid">
+      <div class="profile-card fade-up">
+        <div class="profile-photo">
+          <div class="ph" style="background-image: url('Foto Para Yubilaris/1. HENRIQUES.jpg'); background-size: cover; background-position: top;"></div>
+        </div>
+        <p class="profile-tag">Kaul Kekal</p>
+        <h3 class="profile-name">HENRIQUES CHANGESTU WILLIAM GURU</h3>
+        <p class="profile-parish">Dari St. Alfonsus Rodriguez, Pademangan<br>Keuskupan Agung Jakarta</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/williamsabon/" title="Instagram" aria-label="Instagram"><img src="Logo Sosmed/INSTAGRAM.webp" alt="https://instagram.com" style="width:28px;height:28px;object-fit:contain;"></a>
+        </div>
+      </div>
+
+      <div class="profile-card fade-up delay-1">
+        <div class="profile-photo">
+          <div class="ph" style="background-image: url('Foto Para Yubilaris/2. PAULINUS.jpg'); background-size: cover; background-position: top;"></div>
+        </div>
+        <p class="profile-tag">Kaul Kekal</p>
+        <h3 class="profile-name">PAULINUS SIRINGORINGO</h3>
+        <p class="profile-parish">Dari St. Fidelis, Doloksanggul<br>Keuskupan Agung Medan</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/paul_siringoringo/" title="Instagram" aria-label="Instagram"><img src="Logo Sosmed/INSTAGRAM.webp" alt="https://instagram.com" style="width:28px;height:28px;object-fit:contain;"></a>
+        </div>
+      </div>
+
+      <div class="profile-card fade-up delay-2">
+        <div class="profile-photo">
+          <div class="ph" style="background-image: url('Foto Para Yubilaris/3. PASKALIS.jpg'); background-size: cover; background-position: top;"></div>
+        </div>
+        <p class="profile-tag">Kaul Kekal</p>
+        <h3 class="profile-name">PASKALIS RIVALDO GHARI</h3>
+        <p class="profile-parish">Dari St.Yohanes Pemandi Naesleu, Kefamenanu<br>Keuskupan Atambua</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/paskalino_rg/" title="Instagram" aria-label="Instagram"><img src="Logo Sosmed/INSTAGRAM.webp" alt="https://instagram.com" style="width:28px;height:28px;object-fit:contain;"></a>
+        </div>
+      </div>
+
+      <div class="profile-card fade-up delay-3">
+        <div class="profile-photo">
+          <div class="ph" style="background-image: url('Foto Para Yubilaris/4. GREGORIUS.jpg'); background-size: cover; background-position: top;"></div>
+        </div>
+        <p class="profile-tag">Kaul Kekal</p>
+        <h3 class="profile-name">GREGORIUS RIVALDO JUNIOR</h3>
+        <p class="profile-parish">Dari St. Mikael, Kranji<br>Keuskupan Agung Jakarta</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/georivaldojr/" title="Instagram" aria-label="Instagram"><img src="Logo Sosmed/INSTAGRAM.webp" alt="https://instagram.com" style="width:28px;height:28px;object-fit:contain;"></a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===================== EVENT / DATE ===================== -->
+  <section id="date" class="section" style="background:var(--cream-deep);">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Hari yang Dinanti</span>
+      <h2>Acara</h2>
+    </div>
+
+    <div class="quote-block fade-up delay-1">
+      Dengan segala kerendahan hati kami mengundang para Romo, Suster, Bruder, Frater, Bapak, Ibu, Saudara/i dalam acara pengikraran <strong>Kaul Kekal</strong> dan <strong>Kaul Perdana</strong> yang akan diselenggarakan pada:
+    </div>
+
+    <div class="countdown-wrap fade-up delay-2">
+      <p class="countdown-date">Sabtu, 15 Agustus 2026</p>
+      <div class="countdown" id="countdown">
+        <div class="cell"><div class="num" id="cd-days">00</div><span class="lbl">Hari</span></div>
+        <div class="cell"><div class="num" id="cd-hours">00</div><span class="lbl">Jam</span></div>
+        <div class="cell"><div class="num" id="cd-mins">00</div><span class="lbl">Menit</span></div>
+        <div class="cell"><div class="num" id="cd-secs">00</div><span class="lbl">Detik</span></div>
+      </div>
+      <a class="btn-pill" id="calendarBtn" href="#">Simpan ke Kalender</a>
+    </div>
+
+    <div class="divider-long"></div>
+
+    <div class="event-card fade-up">
+      <div>
+        <p class="ev-eyebrow">Perayaan Ekaristi</p>
+        <h3>Sabtu, 15 Agustus 2026</h3>
+        <p class="ev-time">09.30 WIB &mdash; Sampai Selesai</p>
+        <p class="ev-place"><strong>Kapel Sta. Maria Magdalena Postel</strong><br>Jl. Jayagiri No. 20, Malang</p>
+        <a class="btn-pill" href="https://maps.app.goo.gl/QEYt2JKF8QFbtKKw8" target="_blank" rel="noopener">Kunjungi Lokasi</a>
+      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.305865637836!2d112.60547277502224!3d-7.967308479411666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78828602c74edf%3A0x2a2b440ac36a7467!2sKapel%20Susteran%20Misericordia!5e0!3m2!1sid!2sid!4v1752814837105!5m2!1sid!2sid" loading="lazy"></iframe>
+    </div>
+
+    <div class="event-card fade-up delay-1" style="margin-bottom:0;">
+      <div>
+        <p class="ev-eyebrow">Ramah Tamah</p>
+        <h3>Sabtu, 15 Agustus 2026</h3>
+        <p class="ev-time">12.00 WIB &mdash; Sampai Selesai</p>
+        <p class="ev-place"><strong>Aula SVD &mdash; GOR Badminton Rajabasa</strong><br>Jl. Terusan Rajabasa 5, Malang</p>
+        <a class="btn-pill" href="https://maps.app.goo.gl/Mq79S4GHf8yo7jko9" target="_blank" rel="noopener">Kunjungi Lokasi</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY ===================== -->
+  <section id="galeri" class="section">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Our</span>
+      <h2>Gallery</h2>
+    </div>
+    <div class="gallery-grid fade-up delay-1">
+      <button class="ph" style="background-image: url('Foto Galeri/FG 1.jpg'); background-size: cover; background-position: center; border:none; padding:0; cursor:pointer;" onclick="openLightbox(0)" title="Buka preview"></button>
+      <button class="ph" style="background-image: url('Foto Galeri/FG 2.jpg'); background-size: cover; background-position: center; border:none; padding:0; cursor:pointer;" onclick="openLightbox(1)" title="Buka preview"></button>
+      <button class="ph" style="background-image: url('Foto Galeri/FG 3.jpg'); background-size: cover; background-position: center; border:none; padding:0; cursor:pointer;" onclick="openLightbox(2)" title="Buka preview"></button>
+      <button class="ph" style="background-image: url('Foto Galeri/FG 4.jpg'); background-size: cover; background-position: center; border:none; padding:0; cursor:pointer;" onclick="openLightbox(3)" title="Buka preview"></button>
+      <button class="ph" style="background-image: url('Foto Galeri/FG 5.jpg'); background-size: cover; background-position: center; border:none; padding:0; cursor:pointer;" onclick="openLightbox(4)" title="Buka preview"></button>
+      <button class="ph" style="background-image: url('Foto Galeri/FG 6.jpg'); background-size: cover; background-position: center; border:none; padding:0; cursor:pointer;" onclick="openLightbox(5)" title="Buka preview"></button>
+      <button class="ph" style="background-image: url('Foto Galeri/FG 7.jpg'); background-size: cover; background-position: center; border:none; padding:0; cursor:pointer;" onclick="openLightbox(6)" title="Buka preview"></button>
+    </div>
+  </section>
+
+  <!-- ===================== RSVP / WISH ===================== -->
+  <section id="wish" class="section" style="background:var(--cream-deep);">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Beri Doa &amp; Ucapan Terbaikmu</span>
+      <h2>Untuk Para Yubilaris</h2>
+    </div>
+    <p class="quote-block fade-up delay-1">Tinggalkan kami doa terbaik Anda untuk momen bahagia kami.</p>
+
+    <p class="wish-count-link fade-up delay-1"><a href="#wishList" id="commentCountLink">0 Comments</a></p>
+
+    <div class="rsvp-stats fade-up delay-2">
+      <div>
+        <div class="stat-num" id="stat-hadir">0</div>
+        <div class="stat-lbl">Hadir</div>
+      </div>
+      <div>
+        <div class="stat-num" id="stat-absen">0</div>
+        <div class="stat-lbl">Tidak Hadir</div>
+      </div>
+    </div>
+
+    <p class="quote-block fade-up delay-2" style="font-size:0.82rem;margin-bottom:16px;">*Mohon maaf! Khusus untuk tamu undangan</p>
+
+    <form id="wishForm" class="form-card fade-up delay-3">
+      <div class="form-group">
+        <label for="wName">Nama</label>
+        <input type="text" id="wName" placeholder="Nama Anda" required minlength="2">
+        <p class="form-hint">*2 characters minimum.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Konfirmasi Kehadiran</label>
+        <div class="rsvp-toggle">
+          <button type="button" class="active" data-attend="hadir">Datang</button>
+          <button type="button" data-attend="absen">Absen</button>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:0;">
+        <label for="wMessage">Ucapan &amp; Doa</label>
+        <textarea id="wMessage" rows="3" placeholder="Tuliskan doa dan ucapan Anda..." required minlength="2"></textarea>
+      </div>
+    </form>
+    <button type="submit" form="wishForm" class="btn-submit fade-up delay-3">Kirim</button>
+
+    <div class="wish-list" id="wishList">
+      <div class="wish-empty">Belum ada ucapan. Jadilah yang pertama mengirimkan doa.</div>
+    </div>
+  </section>
+
+  <!-- ===================== GIFT ===================== -->
+  <section class="section">
+    <div class="section-head fade-up">
+      <h2>Hadiah</h2>
+    </div>
+    <p class="gift-text fade-up delay-1">
+      Doa dan dukungan Anda merupakan hadiah yang sangat berarti bagi kami.
+      Namun jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless.
+    </p>
+    <div class="gift-toggle-wrap fade-up delay-1">
+      <button class="btn-pill" id="giftToggle" onclick="toggleGift()">Lihat Rekening</button>
+    </div>
+    <div class="gift-card" id="giftCard">
+      <img src="Logo/LOGO BCA.png" class="bank-logo" alt="Bank Logo">
+      <div class="acc-number">4400190815</div>
+      <div class="acc-name">a.n Victor Petrus Bani &ndash; Raymundus I Made Sudhiarsa</div>
+      <button class="btn-copy" onclick="copyAccount()">Salin Rekening</button>
+    </div>
+  </section>
+
+  <!-- ===================== THANK YOU ===================== -->
+  <section id="section-thanks" class="section">
+    <div class="ornament fade-up zoom-in">
+      <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/><circle cx="12" cy="12" r="8"/></svg>
+    </div>
+    <h2 class="fade-up delay-1">TERIMA KASIH</h2>
+    <p class="ty-sub fade-up delay-2" style="margin-bottom:-20px;">Atas Kehadiran, Doa &amp; Dukungannya.</p>
+  </section>
+
+  <!-- ===================== CLOSING / YANG MENGUNDANG ===================== -->
+  <section id="section-closing" class="section">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Dengan Penuh Syukur</span>
+      <h2>Yang Mengundang</h2>
+    </div>
+
+    <div class="closing-block fade-up delay-1" style="margin-top:0;">
+      <p>P. Paulus I Gusti Agung Gede Suharatan, SVD</p>
+      <p class="role">Provinsial SVD Jawa</p>
+      <p>P. Yohanes I Wayan Marianta, SVD</p>
+      <p class="role">Rektor Seminari Tinggi SVD Surya Wacana</p>
+    </div>
+
+    <div class="divider-long"></div>
+
+    <div class="group-label fade-up" style="margin-top:0;">
+      <div class="gl-tag">Para Yubilaris</div>
+    </div>
+
+    <div class="closing-columns">
+      <div class="closing-block fade-up delay-1" style="margin-top:0;">
+        <h4>Kaul Kekal</h4>
+        <p>Fr. Henriques Changestu William Guru, SVD</p>
+        <p>Fr. Paulinus Siringoringo, SVD</p>
+        <p>Fr. Paskalis Rivaldo Ghari, SVD</p>
+        <p>Fr. Gregorius Rivaldo Junior, SVD</p>
+      </div>
+
+      <div class="closing-block fade-up delay-2" style="margin-top:0;">
+        <h4>Kaul Perdana</h4>
+        <p>Fr. Aprimus Hambut</p>
+        <p>Fr. Bernardinus Jirbeno Ria</p>
+        <p>Fr. Agustinus Clemens Wijayanto</p>
+        <p>Fr. Christian Apriliano Putra</p>
+        <p>Fr. Yokobus Lujuk</p>
+        <p>Fr. Reinaldus Jehamun</p>
+        <p>Fr. Hendrikus Valentino Firya Febrian</p>
+        <p>Fr. Stanislaw Juan Gultom</p>
+      </div>
+    </div>
+
+    <p class="closing-blessing fade-up delay-3">
+      Kemuliaan Kepada Bapa, dan Putra, dan Roh Kudus.<br>Amin.
+    </p>
+  </section>
+
+  <!-- ===================== FOOTER PROMO ===================== -->
+  <section id="section-footer" class="section">
+    <img src="Logo/LOGO 150x150.png" class="cover-logo gate-fade d1" alt="Logo">
+    <p class="fade-up delay-1">Untuk mendapat info tentang Seminari Tinggi SVD Surya Wacana Malang, kunjungi:</p>
+    <div class="footer-links fade-up delay-2">
+      <a href="https://www.facebook.com/seminari.svd.malang.2025" target="_blank" rel="noopener"><img src="Logo Sosmed/FACEBOOK.png" alt="https://facebook.com" title="Facebook" style="width:40px;height:40px;object-fit:contain;"></a>
+      <a href="https://www.instagram.com/seminarisvdmalang/" target="_blank" rel="noopener"><img src="Logo Sosmed/INSTAGRAM.webp" alt="https://instagram.com" title="Instagram" style="width:40px;height:40px;object-fit:contain;"></a>
+      <a href="https://www.youtube.com/c/SeminariTinggiSVDSuryaWacana" target="_blank" rel="noopener"><img src="Logo Sosmed/YOUTUBE.png" alt="https://youtube.com" title="Youtube" style="width:40px;height:40px;object-fit:contain;"></a>
+      <a href="https://www.tiktok.com/@seminaritinggisvd" target="_blank" rel="noopener"><img src="Logo Sosmed/TIKTOK.png" alt="https://tiktok.com" title="Tiktok" style="width:40px;height:40px;object-fit:contain;"></a>
+      <a href="https://sites.google.com/view/svd-surya-wacana/home" target="_blank" rel="noopener"><img src="Logo Sosmed/WEBSITE.png" alt="https://website.id" title="Website" style="width:40px;height:40px;object-fit:contain;"></a>
+    </div>
+  </section>
+
+  <!-- ===================== AUDIO PLAYER ===================== -->
+  <audio id="bgMusic" autoplay loop style="display:none;">
+    <source src="Musik/Goodness Of God.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div><!-- /.phone -->
+
+<!-- ===================== ADMIN BUTTON FOOTER ===================== -->
+<div style="display:flex;justify-content:center;align-items:center;padding:20px 0;background:var(--cream);">
+  <button class="admin-btn" onclick="openAdminModal()" title="Admin Panel">•</button>
+</div>
+
+<!-- ===================== GALLERY LIGHTBOX ===================== -->
+<div id="lightbox">
+  <div class="lightbox-content">
+    <img id="lightboxImage" src="" alt="Gallery Preview">
+    <div class="lightbox-nav">
+      <button onclick="prevImage()" title="Sebelumnya">‹</button>
+      <button onclick="nextImage()" title="Berikutnya">›</button>
+    </div>
+    <button class="lightbox-close" onclick="closeLightbox()" title="Tutup">✕</button>
+    <div class="lightbox-counter"><span id="imageCounter">1</span> / <span id="imageTotal">6</span></div>
+  </div>
+</div>
+
+<!-- ===================== ADMIN LOGIN MODAL ===================== -->
+<div id="adminModal">
+  <div class="modal-content">
+    <!-- LOGIN FORM -->
+    <div id="adminLoginPanel">
+      <h3>Login Admin</h3>
+      <p class="modal-hint">Masukkan password untuk mengelola</p>
+      <form id="adminLoginForm" onsubmit="return handleAdminLogin(event)">
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" placeholder="Masukkan password" required>
+        </div>
+        <div class="modal-buttons">
+          <button type="button" class="btn-cancel" onclick="closeAdminModal()">Batal</button>
+          <button type="submit" class="btn-submit-modal">Login</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ADMIN PANEL (Tersembunyi sampai login) -->
+    <div id="adminPanel" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <h3>Kelola Komentar</h3>
+        <button type="button" onclick="logoutAdmin()" style="background:none;border:1px solid var(--accent);color:var(--text);padding:6px 12px;border-radius:4px;cursor:pointer;font-size:0.9rem;">Logout</button>
+      </div>
+
+      <div id="adminWishList" style="max-height:400px;overflow-y:auto;">
+        <!-- Populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== BOTTOM NAV (disembunyikan, opsional) ===================== -->
+<nav class="bottom-nav">
+  <a href="#section-cover">Home</a>
+  <a href="#couple">Yubilaris</a>
+  <a href="#date">Acara</a>
+  <a href="#galeri">Gallery</a>
+  <a href="#wish">Ucapan</a>
+</nav>
+
+<script>
+  // Kunci scroll body selama gate masih tampil, supaya saat undangan dibuka
+  // posisi scroll dijamin masih di 0 (mencegah lembar yang muncul bukan paling atas)
+  document.body.style.overflow = 'hidden';
+
+  // ---------- Background photo rotation for gate (preload + decode dulu, baru crossfade) ----------
+  // Pendekatan ini mencegah "jumping": foto baru di-decode browser SEBELUM ditampilkan,
+  // dan animasi opacity (wrapper) terpisah total dari animasi zoom (img di dalamnya).
+  const gateImages = [
+    'Foto Welcome/FW 1.JPG',
+    'Foto Welcome/FW 2.JPG'
+  ];
+
+  const layerA = document.getElementById('gateLayerA');
+  const layerB = document.getElementById('gateLayerB');
+  const imgA = document.getElementById('gatePhotoA');
+  const imgB = document.getElementById('gatePhotoB');
+
+  // Preload semua foto gate di awal supaya saat rotasi tiba, gambar sudah ada di cache browser
+  const preloadedGateImgs = gateImages.map(src=>{
+    const im = new Image();
+    im.src = src;
+    return im;
+  });
+
+  function decodeImage(imgEl){
+    // img.decode() memastikan frame sudah siap di-paint, mencegah "snap" saat fade dimulai.
+    // Fallback ke onload untuk browser lama yang belum dukung decode().
+    if(imgEl.decode){
+      return imgEl.decode().catch(()=>{});
+    }
+    return new Promise(resolve=>{
+      if(imgEl.complete){ resolve(); return; }
+      imgEl.onload = ()=>resolve();
+      imgEl.onerror = ()=>resolve();
+    });
+  }
+
+  let gateIndex = 1; // FW 1 sudah tampil di layer A saat load
+  let activeIsA = true;
+  let gateRotateTimer = null;
+
+  async function rotateGatePhoto(){
+    const nextSrc = gateImages[gateIndex % gateImages.length];
+    gateIndex++;
+
+    const incoming = activeIsA ? imgB : imgA;
+    const incomingLayer = activeIsA ? layerB : layerA;
+    const outgoingLayer = activeIsA ? layerA : layerB;
+
+    incoming.src = nextSrc;
+    await decodeImage(incoming); // tunggu sampai benar-benar siap, baru mulai fade
+
+    // reset state zoom layer baru ke ukuran normal dulu (tanpa transition) sebelum di-trigger
+    incomingLayer.classList.remove('kb');
+    incoming.style.transition = 'none';
+    incoming.getBoundingClientRect(); // force reflow
+
+    incomingLayer.classList.add('active');
+    outgoingLayer.classList.remove('active');
+
+    // mulai zoom Ken-Burns perlahan setelah layer aktif, terpisah dari fade opacity
+    requestAnimationFrame(()=>{
+      incoming.style.transition = '';
+      incomingLayer.classList.add('kb');
+    });
+    // bersihkan kelas kb dari layer yang baru disembunyikan supaya siap dipakai lagi nanti
+    outgoingLayer.classList.remove('kb');
+
+    activeIsA = !activeIsA;
+  }
+
+  // Picu Ken-Burns untuk foto pertama yang sudah tampil saat load
+  requestAnimationFrame(()=>{ layerA.classList.add('kb'); });
+
+  // Mulai rotasi tiap 5 detik
+  gateRotateTimer = setInterval(rotateGatePhoto, 5000);
+
+  // ---------- Gate / Open Invitation ----------
+  let invitationOpened = false;
+  function openInvitation(){
+    if(invitationOpened) return;
+    invitationOpened = true;
+
+    const gate = document.getElementById('gate');
+    const main = document.getElementById('mainPhone');
+
+    // hentikan rotasi foto gate supaya tidak kerja sia-sia di background
+    if(gateRotateTimer) clearInterval(gateRotateTimer);
+
+    // mulai animasi "membuka" pada gate (konten gate fade+naik, lalu overlay fade out)
+    gate.classList.add('opening');
+
+    // mulai reveal halaman utama sedikit lebih cepat dari gate selesai,
+    // supaya terasa seperti "tirai diangkat" bukan "halaman muncul tiba-tiba"
+    requestAnimationFrame(()=>{
+      main.classList.add('reveal-in');
+    });
+
+    document.body.style.overflow = 'auto';
+
+    // setelah animasi gate selesai (perkiraan durasi terlama ~1.15s), baru sembunyikan total & scroll
+    setTimeout(()=>{
+      gate.classList.add('hidden');
+      // Scroll ke paling atas halaman (bukan ke #couple), supaya section pertama yang
+      // terlihat adalah #section-cover ("Hiduplah Allah Tritunggal Mahakudus...")
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 950);
+  }
+
+  // ---------- Scroll fade-in animation ----------
+  (function(){
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+        } else {
+          entry.target.classList.remove('in-view');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up, .zoom-in').forEach(el=>{
+      observer.observe(el);
+    });
+
+    // Reveal elements already in viewport on load (e.g. first section)
+    setTimeout(()=>{
+      document.querySelectorAll('.fade-up, .zoom-in').forEach(el=>{
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight && rect.bottom > 0){
+          el.classList.add('in-view');
+        }
+      });
+    }, 100);
+  })();
+
+  // ---------- Countdown : Sabtu, 15 Agustus 2026, 09.30 WIB ----------
+  const target = new Date('2026-08-15T09:30:00+07:00').getTime();
+  function updateCountdown(){
+    const now = Date.now();
+    let diff = target - now;
+    if(diff < 0) diff = 0;
+    const days = Math.floor(diff/(1000*60*60*24));
+    const hours = Math.floor((diff/(1000*60*60))%24);
+    const mins = Math.floor((diff/(1000*60))%60);
+    const secs = Math.floor((diff/1000)%60);
+    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ---------- Add to calendar (Google Calendar link) ----------
+  (function(){
+    const start = '20260815T023000Z'; // 09:30 WIB = 02:30 UTC
+    const end   = '20260815T053000Z';
+    const title = encodeURIComponent('Perayaan Kaul Kekal & Perdana SVD');
+    const details = encodeURIComponent('Perayaan Ekaristi Kaul Kekal & Perdana');
+    const loc = encodeURIComponent('Kapel Sta. Maria Magdalena Postel, Jl. Jayagiri No 20, Malang');
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${loc}`;
+    document.getElementById('calendarBtn').href = url;
+    document.getElementById('calendarBtn').target = '_blank';
+  })();
+
+  // ---------- Gift toggle ----------
+  function toggleGift(){
+    const card = document.getElementById('giftCard');
+    const btn = document.getElementById('giftToggle');
+    const showing = card.classList.toggle('show');
+    btn.textContent = showing ? 'Sembunyikan Rekening' : 'Lihat Rekening';
+  }
+
+  // ---------- Copy account number ----------
+  function copyAccount(){
+    const num = '4400190815';
+    navigator.clipboard.writeText(num).then(()=>{
+      const btn = document.querySelector('.btn-copy');
+      const original = btn.textContent;
+      btn.textContent = 'Tersalin!';
+      setTimeout(()=>{ btn.textContent = original; }, 1800);
+    }).catch(()=>{
+      alert('Nomor rekening: ' + num);
+    });
+  }
+
+  // ---------- Admin Authentication ----------
+  const ADMIN_PASSWORD = 'admin2026'; // Password admin
+  const ADMIN_KEY = 'kaul2026_admin';
+  let isAdmin = false;
+  
+  try{
+    const savedAdmin = localStorage.getItem(ADMIN_KEY);
+    isAdmin = savedAdmin === 'true';
+  }catch(e){ isAdmin = false; }
+
+  function openAdminModal(){
+    document.getElementById('adminModal').classList.add('show');
+  }
+
+  function closeAdminModal(){
+    document.getElementById('adminModal').classList.remove('show');
+    if(!isAdmin){
+      document.getElementById('adminPassword').value = '';
+    } else {
+      document.getElementById('adminLoginPanel').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'block';
+    }
+  }
+
+  function handleAdminLogin(e){
+    e.preventDefault();
+    const password = document.getElementById('adminPassword').value;
+    if(password === ADMIN_PASSWORD){
+      isAdmin = true;
+      try{ localStorage.setItem(ADMIN_KEY, 'true'); }catch(e){}
+      document.getElementById('adminLoginPanel').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'block';
+      renderWishes();
+      alert('Login berhasil!');
+    } else {
+      alert('Password salah!');
+      document.getElementById('adminPassword').value = '';
+    }
+  }
+
+  // Logout admin
+  function logoutAdmin(){
+    isAdmin = false;
+    try{ localStorage.setItem(ADMIN_KEY, 'false'); }catch(e){}
+    document.getElementById('adminLoginPanel').style.display = 'block';
+    document.getElementById('adminPanel').style.display = 'none';
+    document.getElementById('adminPassword').value = '';
+    renderWishes();
+  }
+
+  // Close modal jika klik di luar
+  document.getElementById('adminModal').addEventListener('click', (e)=>{
+    if(e.target.id === 'adminModal') closeAdminModal();
+  });
+
+  // ---------- RSVP & Wishes (in-memory / session storage) ----------
+  const STORAGE_KEY = 'kaul2026_wishes';
+  let wishes = [];
+  try{
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    if(saved) wishes = JSON.parse(saved);
+  }catch(e){ wishes = []; }
+
+  let currentAttend = 'hadir';
+  document.querySelectorAll('.rsvp-toggle button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.rsvp-toggle button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      currentAttend = btn.dataset.attend;
+    });
+  });
+
+  function deleteWish(index){
+    if(!isAdmin){
+      alert('Hanya admin yang dapat menghapus komentar!');
+      return;
+    }
+    if(confirm('Hapus komentar ini?')){
+      wishes.splice(index, 1);
+      try{ sessionStorage.setItem(STORAGE_KEY, JSON.stringify(wishes)); }catch(e){}
+      renderWishes();
+    }
+  }
+
+  function renderWishes(){
+    const list = document.getElementById('wishList');
+    const adminList = document.getElementById('adminWishList');
+    const hadirCount = wishes.filter(w=>w.attend==='hadir').length;
+    const absenCount = wishes.filter(w=>w.attend==='absen').length;
+    document.getElementById('stat-hadir').textContent = hadirCount;
+    document.getElementById('stat-absen').textContent = absenCount;
+    document.getElementById('commentCountLink').textContent = wishes.length + ' Comments';
+
+    const wishHtml = wishes.length === 0 
+      ? '<div class="wish-empty">Belum ada ucapan. Jadilah yang pertama mengirimkan doa.</div>'
+      : wishes.map((w, i)=>`
+        <div class="wish-item">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+            <div class="wname">
+              ${escapeHtml(w.name)} 
+              <span class="wish-badge ${w.attend==='absen'?'absen':''}">${w.attend==='hadir'?'Hadir':'Tidak Hadir'}</span>
+              ${isAdmin ? '<span class="admin-badge">Admin</span>' : ''}
+            </div>
+            ${isAdmin ? `<button type="button" onclick="deleteWish(${i})" style="background:none;border:none;color:#8A6A3A;cursor:pointer;font-size:1.2rem;padding:0;min-width:auto;" title="Hapus">×</button>` : ''}
+          </div>
+          <div class="wmsg">${escapeHtml(w.message)}</div>
+          <div class="wtime">${new Date(w.time).toLocaleString('id-ID', {dateStyle:'medium', timeStyle:'short'})}</div>
+        </div>
+      `).join('');
+    
+    if(list) list.innerHTML = wishHtml;
+    if(adminList) adminList.innerHTML = wishHtml;
+  }
+
+  function escapeHtml(str){
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  document.getElementById('wishForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('wName').value.trim();
+    const message = document.getElementById('wMessage').value.trim();
+    if(name.length < 2 || message.length < 2) return;
+
+    wishes.push({ name, message, attend: currentAttend, time: Date.now() });
+    try{ sessionStorage.setItem(STORAGE_KEY, JSON.stringify(wishes)); }catch(e){}
+
+    document.getElementById('wName').value = '';
+    document.getElementById('wMessage').value = '';
+    renderWishes();
+  });
+
+  renderWishes();
+
+  // ---------- Gallery Lightbox ----------
+  const galleryImages = [
+    'Foto Galeri/FG 1.jpg',
+    'Foto Galeri/FG 2.jpg',
+    'Foto Galeri/FG 3.jpg',
+    'Foto Galeri/FG 4.jpg',
+    'Foto Galeri/FG 5.jpg',
+    'Foto Galeri/FG 6.jpg',
+    'Foto Galeri/FG 7.jpg'
+  ];
+  let currentGalleryImageIndex = 0;
+
+  function openLightbox(index){
+    currentGalleryImageIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightboxImage');
+    img.src = galleryImages[index];
+    document.getElementById('imageCounter').textContent = index + 1;
+    document.getElementById('imageTotal').textContent = galleryImages.length;
+    lightbox.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+
+  function nextImage(){
+    currentGalleryImageIndex = (currentGalleryImageIndex + 1) % galleryImages.length;
+    openLightbox(currentGalleryImageIndex);
+  }
+
+  function prevImage(){
+    currentGalleryImageIndex = (currentGalleryImageIndex - 1 + galleryImages.length) % galleryImages.length;
+    openLightbox(currentGalleryImageIndex);
+  }
+
+  // Close lightbox jika klik di luar
+  document.getElementById('lightbox').addEventListener('click', (e)=>{
+    if(e.target.id === 'lightbox') closeLightbox();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e)=>{
+    const lightbox = document.getElementById('lightbox');
+    if(lightbox.classList.contains('show')){
+      if(e.key === 'ArrowRight') nextImage();
+      if(e.key === 'ArrowLeft') prevImage();
+      if(e.key === 'Escape') closeLightbox();
+    }
+  });
+</script>
+
+</body>
+</html>
